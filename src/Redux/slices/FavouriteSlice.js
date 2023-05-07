@@ -28,7 +28,14 @@ export const getFavourites = createAsyncThunk(
 export const Favourite = createSlice({
   name: "Favourite",
   initialState,
-  reducers: {},
+  reducers: {
+    resetFavourites: (state, action) => {
+      state.FavouriteInfo = {};
+      state.FavouriteInfoError = false;
+      state.FavouriteInfoLoading = false;
+      state.FavouriteInfoStatus = false;
+    },
+  },
   extraReducers: {
     [getFavourites.fulfilled]: (state, action) => {
       state.FavouriteInfo = action.payload;
@@ -48,5 +55,5 @@ export const Favourite = createSlice({
     },
   },
 });
-
+export const { resetFavourites } = Favourite.actions;
 export default Favourite.reducer;

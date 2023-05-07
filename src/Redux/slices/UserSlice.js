@@ -19,7 +19,14 @@ export const getUserInfo = createAsyncThunk("getUserInfo", async () => {
 export const userSlice = createSlice({
   name: "userSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    resetUser: (state, action) => {
+      state.userInfo = {};
+      state.userInfoError = false;
+      state.userInfoLoading = false;
+      state.userInfoStatus = false;
+    },
+  },
   extraReducers: {
     [getUserInfo.fulfilled]: (state, action) => {
       state.userInfo = action.payload;
@@ -40,5 +47,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { clearErrorMessages } = userSlice.actions;
+export const { resetUser } = userSlice.actions;
 export default userSlice.reducer;

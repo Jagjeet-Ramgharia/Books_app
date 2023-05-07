@@ -12,8 +12,8 @@ const Header = () => {
   ];
 
   return (
-    <div className="w-full h-20 bg-gray-200 p-2 gap-2 flex items-center">
-      <div className="w-16">
+    <div className="w-full h-[100px] bg-gray-200 p-2 gap-2 flex items-center">
+      <div className="">
         <Image src={Icon} height={40} width={50} />
       </div>
       <div className="flex items-center justify-center w-full gap-5">
@@ -22,8 +22,8 @@ const Header = () => {
         })}
       </div>
       <div className="w-max flex flex-col">
-        <span>{user?.name}</span>
-        <span>{user?.email}</span>
+        <span className="text-gray-700">{user?.name}</span>
+        <span className="text-gray-700">{user?.email}</span>
       </div>
     </div>
   );

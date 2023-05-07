@@ -3,9 +3,12 @@ import SubmitButton from "@/src/Components/Buttons/SubmitButton";
 import InputField from "@/src/Components/TextInput/TextInput";
 import { apiRoutes } from "@/src/Constants/apiRoutes";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const login = () => {
+  const location = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState({
@@ -15,15 +18,19 @@ const login = () => {
 
   function handleOnClick(e) {
     e.preventDefault();
+    setIsLoading(true);
     axiosInstance
       .post(apiRoutes.login, {
         email,
         password,
       })
       .then((res) => {
-        console.log("res", res);
         if (res.status === 200) {
           localStorage.setItem("token", res.data.token);
+          location.push("/books");
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 5000);
         }
       })
       .catch((err) => {
@@ -32,8 +39,8 @@ const login = () => {
             err: true,
             message: err?.response?.data?.errors?.[0]?.msg,
           });
+          setIsLoading(false);
         }
-        console.log("err", err);
       });
   }
 
@@ -54,7 +61,11 @@ const login = () => {
           value={password}
           handleChange={(e) => setPassword(e.target.value)}
         />
-        <SubmitButton text={"Login"} handleOnClick={handleOnClick} />
+        <SubmitButton
+          text={"Login"}
+          handleOnClick={handleOnClick}
+          isLoading={isLoading}
+        />
         {err.err && (
           <span className="text-red-600 text-center">{err.message}</span>
         )}

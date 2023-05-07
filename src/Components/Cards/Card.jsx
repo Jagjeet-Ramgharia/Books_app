@@ -1,5 +1,6 @@
 import React from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import AddReview from "../AddReview/AddReview";
 
 const Card = ({
   title,
@@ -13,18 +14,23 @@ const Card = ({
   btnText = "",
   setShowReviews,
   showReviews,
+  reviews,
 }) => {
   return (
     <div
       className={`w-[400px] ${
         showReviews === id ? "h-[700px]" : "h-max"
-      } mx-6 mb-5 flex flex-col min-h-[500px] justify-between rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700`}
+      } mx-6 mb-5 flex flex-col min-h-[480px] overflow-hidden rounded-xl justify-between bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700`}
     >
-      <img
-        className="rounded-t-lg"
-        src={image || "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg"}
-        alt="book_image"
-      />
+      <div className="h-300px">
+        <img
+          className="h-full object-cover"
+          src={
+            image || "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg"
+          }
+          alt="book_image"
+        />
+      </div>
 
       <div className="p-6">
         <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
@@ -49,7 +55,11 @@ const Card = ({
           Show Reviews <IoIosArrowDown size={20} />{" "}
         </div>
       )}
-      {showReviews === id && <div className="h-[350px]"></div>}
+      {showReviews === id && (
+        <div className="h-[350px] px-6">
+          <AddReview reviews={reviews} bookId={id} />
+        </div>
+      )}
       {showReviews === id && (
         <div
           onClick={() => setShowReviews("")}

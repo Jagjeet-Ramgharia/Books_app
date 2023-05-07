@@ -3,7 +3,7 @@ import React from "react";
 
 const MenuLinks = ({ to, text }) => {
   return (
-    <Link className="text-blue-500 font-semibold text-lg" href={to}>
+    <Link className="text-gray-700 font-semibold text-2xl" href={to}>
       {text}
     </Link>
   );

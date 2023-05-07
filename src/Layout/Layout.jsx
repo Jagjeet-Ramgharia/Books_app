@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   return (
     <div className="">
       <Header />
-      <div style={{ height: "Calc(100vh - 80px)" }}>{children}</div>
+      <div style={{ height: "Calc(100vh - 100px)" }}>{children}</div>
     </div>
   );
 };

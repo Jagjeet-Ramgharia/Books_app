@@ -7,4 +7,6 @@ export const apiRoutes = {
   addToFavourites: "add-books",
   getFavourites: "/favourites",
   removeFavourites: "/delete-books",
+  getGenres: "/genres",
+  getAuthors: "/authors",
 };

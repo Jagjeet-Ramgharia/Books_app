@@ -8,3 +8,21 @@
   box-sizing: border-box;
   font-family: "Manrope", sans-serif;
 }
+
+.Toastify__toast--success {
+  border-radius: 10px !important;
+  border: 1px solid gray !important;
+  background: #111315 !important;
+  color: white !important;
+  width: 350px;
+}
+.Toastify__toast--error {
+  border-radius: 10px !important;
+  border: 1px solid gray !important;
+  background: #111315 !important;
+  color: white !important;
+  width: 350px;
+}
+.Toastify__toast-container {
+  width: 370px !important;
+}

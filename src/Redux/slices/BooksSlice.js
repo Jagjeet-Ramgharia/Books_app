@@ -12,7 +12,7 @@ const initialState = {
 
 export const getBooks = createAsyncThunk(
   "getBooks",
-  async ({ page, perPage, search }) => {
+  async ({ page, perPage, search, author, genre }) => {
     const response = await axiosInstance.get(
       `${apiRoutes.baseUrl}/api/v1/${apiRoutes.getAllBooks}`,
       {
@@ -20,6 +20,8 @@ export const getBooks = createAsyncThunk(
           page,
           perPage,
           search,
+          author,
+          genre,
         },
       }
     );
@@ -31,7 +33,14 @@ export const getBooks = createAsyncThunk(
 export const BooksSlice = createSlice({
   name: "BooksSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    resetBooks: (state, action) => {
+      state.BooksInfo = {};
+      state.BooksInfoError = false;
+      state.BooksInfoLoading = false;
+      state.BooksInfoStatus = false;
+    },
+  },
   extraReducers: {
     [getBooks.fulfilled]: (state, action) => {
       state.BooksInfo = action.payload;
@@ -51,5 +60,5 @@ export const BooksSlice = createSlice({
     },
   },
 });
-
+export const { resetBooks } = BooksSlice.actions;
 export default BooksSlice.reducer;
