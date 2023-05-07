@@ -19,7 +19,7 @@ const Card = ({
   return (
     <div
       className={`w-[400px] ${
-        showReviews === id ? "h-[700px]" : "h-max"
+        showReviews === id ? "h-[780px]" : "h-max"
       } mx-6 mb-5 flex flex-col min-h-[480px] overflow-hidden rounded-xl justify-between bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700`}
     >
       <div className="h-300px">

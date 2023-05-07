@@ -26,7 +26,7 @@ const AddReview = ({ reviews = [], bookId }) => {
         setIsLodaing(false);
       })
       .catch((err) => {
-        setErr(err?.response?.data?.errors[0]?.msg);
+        setErr(err?.response?.data?.errors?.[0]?.msg);
         setIsLodaing(false);
       });
   }
@@ -34,9 +34,11 @@ const AddReview = ({ reviews = [], bookId }) => {
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="flex flex-col gap-1 h-[200px] overflow-y-scroll">
-        {allReviews.map((el) => {
-          return <span key={el?.id}>{el?.comment}</span>;
-        })}
+        {allReviews?.length > 0
+          ? allReviews.map((el) => {
+              return <span key={el?.id}>{el?.comment}</span>;
+            })
+          : "No Reviews Yet"}
       </div>
       <div className="flex flex-col">
         <div className="flex items-center justify-between">
