@@ -4,6 +4,7 @@ import BooksSlice from "../slices/BooksSlice";
 import FavouriteSlice from "../slices/FavouriteSlice";
 import GenresSlice from "../slices/GenresSlice";
 import AuthorsSlice from "../slices/AuthorSlice";
+import ReviewsSlice from '../slices/ReviewSlice';
 
 const rootReducer = combineReducers({
   UserSlice,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   FavouriteSlice,
   GenresSlice,
   AuthorsSlice,
+  ReviewsSlice
 });
 
 export default rootReducer;

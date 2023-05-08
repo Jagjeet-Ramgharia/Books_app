@@ -65,6 +65,7 @@ const login = () => {
           text={"Login"}
           handleOnClick={handleOnClick}
           isLoading={isLoading}
+          disabled={isLoading}
         />
         {err.err && (
           <span className="text-red-600 text-center">{err.message}</span>

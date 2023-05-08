@@ -1,14 +1,16 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
+  const location = useRouter()
+  useEffect(()=>{
+    location.push("/login")
+  },[])
+
   return (
-    <>
-      <Head></Head>
-    </>
+    <div className="flex items-center justify-center w-screen h-screen">
+      <CircularProgress sx={{color:"gray"}} size={50}/>
+    </div>
   );
 }

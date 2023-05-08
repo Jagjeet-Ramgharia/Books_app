@@ -9,4 +9,5 @@ export const apiRoutes = {
   removeFavourites: "/delete-books",
   getGenres: "/genres",
   getAuthors: "/authors",
+  getReviews:"/get-reviews/"
 };

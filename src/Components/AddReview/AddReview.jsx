@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputField from "../TextInput/TextInput";
 import SubmitButton from "../Buttons/SubmitButton";
 import axiosInstance from "@/src/Axios/axiosInstance";
+import { useDispatch, useSelector } from "react-redux";
+import { getReviews } from "@/src/Redux/slices/ReviewSlice";
+import { CircularProgress } from "@mui/material";
 
-const AddReview = ({ reviews = [], bookId }) => {
+const AddReview = ({ bookId }) => {
+  const dispatch = useDispatch()
   const [newReview, setNewReview] = useState();
   const [err, setErr] = useState();
   const [isLoading, setIsLodaing] = useState(false);
-  const [allReviews, setAllReviews] = useState([...reviews]);
+  const Reviews = useSelector((state) => state.ReviewsSlice.ReviewsInfo)
+  const ReviewsLoading = useSelector((state) => state.ReviewsSlice.ReviewsInfoLoading)
+
+  useEffect(()=>{
+    if(bookId){
+      dispatch(getReviews({id:bookId}))
+    }
+  },[bookId])
 
   function handleAddReview(id) {
     setIsLodaing(true);
@@ -16,11 +27,7 @@ const AddReview = ({ reviews = [], bookId }) => {
         comment: newReview,
       })
       .then((res) => {
-        console.log("res", res);
-        const obj = {
-          ...res.data?.review,
-        };
-        setAllReviews([...reviews, obj]);
+        dispatch(getReviews({id:bookId}))
         setNewReview("");
         setErr("");
         setIsLodaing(false);
@@ -34,8 +41,10 @@ const AddReview = ({ reviews = [], bookId }) => {
   return (
     <div className="flex flex-col justify-between h-full">
       <div className="flex flex-col gap-1 h-[200px] overflow-y-scroll">
-        {allReviews?.length > 0
-          ? allReviews.map((el) => {
+        {ReviewsLoading ? <div className="w-full flex items-center justify-center">
+          <CircularProgress size={20} sx={{color:"gray"}}/> 
+        </div>: Reviews?.reviews?.length > 0
+          ? Reviews?.reviews?.map((el) => {
               return <span key={el?.id}>{el?.comment}</span>;
             })
           : "No Reviews Yet"}
