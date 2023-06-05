@@ -98,7 +98,7 @@ const Books = () => {
 
   return (
     <Layout>
-      <div className="bg-gray-100 w-full overflow-y-auto h-full p-2">
+      <div className="bg-gray-100 w-full overflow-y-auto h-full">
         <div className="flex justify-between items-center my-5 mx-3">
           <span className="text-2xl font-extrabold">All Books</span>
           <CustomSelect

@@ -1,5 +1,4 @@
 import axios from "axios";
-import store from "../Redux/store/store";
 import { apiRoutes } from "../Constants/apiRoutes";
 
 const axiosInstance = axios.create({
