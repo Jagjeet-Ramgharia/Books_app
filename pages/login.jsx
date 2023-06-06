@@ -51,7 +51,7 @@ const login = () => {
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
-      <form className="form_main shadow-2xl" action="">
+      <form className="form_main z-50 shadow-2xl" action="">
         <p className="heading">Login</p>
         <div className="inputContainer">
           <svg
@@ -109,7 +109,7 @@ const login = () => {
           </Link>
         </div>
       </form>
-      {/* <Particals/> */}
+      <Particals/>
     </div>
   );
 };
