@@ -10,7 +10,6 @@ import { CircularProgress, Pagination } from "@mui/material";
 import { getGenres } from "@/src/Redux/slices/GenresSlice";
 import { getAuthors } from "@/src/Redux/slices/AuthorSlice";
 import CustomSelect from "@/src/Components/SelectComponent/Select";
-import SubmitButton from "@/src/Components/Buttons/SubmitButton";
 import { Toast } from "@/src/Components/Toast/Toast";
 
 const Books = () => {
@@ -96,6 +95,7 @@ const Books = () => {
       });
   }
 
+
   return (
     <Layout>
       <div className="bg-gray-100 w-full overflow-y-auto h-full">
@@ -129,32 +129,38 @@ const Books = () => {
             />
           </div>
         </div>
-        <div className="mt-10 flex flex-wrap">
-          {isLoading ? (
-            <div className="w-screen h-[600px] flex items-center justify-center">
-              <CircularProgress sx={{ color: "gray" }} size={50} />
-            </div>
-          ) : (
-            books?.books?.map((el) => {
-              return (
-                <Card
-                  key={el?.id}
-                  id={el?.id}
-                  author={el?.author}
-                  description={el?.description}
-                  genre={el?.genre}
-                  title={el?.title}
-                  image={el?.image}
-                  btnText="Add To Favourites"
-                  isLoading={loading}
-                  handleOnClick={addToFavourites}
-                  setShowReviews={setShowReviews}
-                  showReviews={showReviews}
-                  reviews={el?.reviews}
-                />
-              );
-            })
-          )}
+        <div className="w-full flex items-center justify-center">
+          <div className="mt-10 w-10/12">
+            {isLoading ? (
+              <div className="w-full h-[600px] flex items-center justify-center">
+                <CircularProgress sx={{ color: "gray" }} size={50} />
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-3 gap-5">
+                {
+                  books?.books?.map((el) => {
+                return (
+                  <Card
+                    key={el?.id}
+                    id={el?.id}
+                    author={el?.author}
+                    description={el?.description}
+                    genre={el?.genre}
+                    title={el?.title}
+                    image={el?.image}
+                    btnText="Add To Favourites"
+                    isLoading={loading}
+                    handleOnClick={addToFavourites}
+                    setShowReviews={setShowReviews}
+                    showReviews={showReviews}
+                    reviews={el?.reviews}
+                  />
+                );
+              })
+                }
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </Layout>

@@ -1,6 +1,8 @@
 import React from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import AddReview from "../AddReview/AddReview";
+import { TruncateString } from "@/src/Utils/utils";
+import {BiUser } from 'react-icons/bi'
 
 const Card = ({
   title,
@@ -22,7 +24,7 @@ const Card = ({
         showReviews === id ? "h-[830px]" : "h-max"
       } mx-6 mb-5 flex flex-col min-h-[480px] overflow-hidden rounded-xl justify-between bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700`}
     >
-      <div className="h-300px">
+      <div className="h-[300px]">
         <img
           data-cy="image_container"
           className="h-full object-cover"
@@ -33,12 +35,16 @@ const Card = ({
         />
       </div>
 
-      <div className="p-6">
-        <h5 data-cy="title" className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          {`${title}-${author}-${genre}`}
+      <div className="p-3">
+        <h5 data-cy="title" className="mb-2 text-lg font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          {title}
         </h5>
-        <p data-cy="desc" className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-          {description}
+        <span className="flex font-medium leading-tight text-neutral-800 items-center gap-2">
+          <BiUser className="font-medium leading-tight text-neutral-800"/>
+          {author}
+        </span>
+        <p data-cy="desc" className="mb-4 h-12 text-base text-neutral-600 dark:text-neutral-200">
+          {TruncateString(description,95)}
         </p>
         <button
           data-cy="button"
