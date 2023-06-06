@@ -50,39 +50,6 @@ const login = () => {
 
   return (
     <div className="w-screen bg-gray-300 h-screen flex items-center justify-center">
-      {/* <div className="h-[500px] w-[500px] p-16 border rounded-lg border-[#b2afaf] shadow-2xl flex justify-between flex-col">
-        <InputField
-          name={"Name"}
-          type="text"
-          placeholder={"Enter your name"}
-          value={name}
-          handleChange={(e) => setName(e.target.value)}
-        />
-        <InputField
-          name={"Email"}
-          type="text"
-          placeholder={"Enter your email"}
-          value={email}
-          handleChange={(e) => setEmail(e.target.value)}
-        />
-        <InputField
-          type="password"
-          name={"Password"}
-          placeholder={"*******"}
-          value={password}
-          handleChange={(e) => setPassword(e.target.value)}
-        />
-        <SubmitButton text={"Sign Up"} handleOnClick={handleOnClick} />
-        {err.err && (
-          <span className="text-red-600 text-center">{err.message}</span>
-        )}
-        <div className="text-center">
-          Already have an accout ?{" "}
-          <Link href={"/login"} className="underline text-blue-800">
-            Login here
-          </Link>
-        </div>
-      </div> */}
       <form className="form_main z-50 shadow-2xl" action="">
         <p className="heading">SignUp</p>
         <div className="inputContainer">
