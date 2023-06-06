@@ -35,7 +35,7 @@ describe("<Card />", () => {
       "https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJvb2tzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
     );
 
-    cy.getBySel("title").should("have.text", "This is title-DejaVu-classics");
+    cy.getBySel("title").should("have.text", "This is title");
 
     cy.getBySel("desc").should("have.text", "This is a Desc...");
 

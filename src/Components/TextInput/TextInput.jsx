@@ -16,13 +16,14 @@ function InputField({
 
   return (
     <div className="w-full">
-      <label htmlFor={name}>{name}</label>
+      {/* <label htmlFor={name}>{name}</label> */}
       <input
+      autoComplete="off"
         value={value}
         onChange={handleChange}
         name={name}
         type={fieldType}
-        className="h-10 rounded-lg w-full text-black outline-0 pl-2"
+        className="inputField"
         placeholder={placeholder}
         disabled={disabled}
       />
