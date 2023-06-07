@@ -21,13 +21,13 @@ const Card = ({
   return (
     <div
       className={`w-[400px] ${
-        showReviews === id ? "h-[830px]" : "h-max"
-      } mx-6 mb-5 flex flex-col min-h-[480px] overflow-hidden rounded-xl justify-between bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700`}
+        showReviews === id ? "h-[830px]" : "h-400px"
+      } mx-6 mb-5 flex flex-col min-h-[350px] overflow-hidden rounded-xl justify-between bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700`}
     >
-      <div className="h-[300px]">
+      <div className="h-[200px] w-full">
         <img
           data-cy="image_container"
-          className="h-full object-cover"
+          className="h-full w-full object-cover"
           src={
             image || "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg"
           }

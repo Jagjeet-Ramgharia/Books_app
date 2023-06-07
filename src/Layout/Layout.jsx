@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "./Header";
 import { getUserInfo } from "../Redux/slices/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { CircularProgress } from "@mui/material";
-import {motion, AnimatePresence} from 'framer-motion'
+import PageTransition from "../Components/PageTransition/PageTransition";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
+  const ref = useRef();
   const location = useRouter();
   const user = useSelector((state) => state.UserSlice?.userInfo);
 
@@ -21,19 +22,19 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <div className="">
-      <AnimatePresence>
+    <div className="h-screen background bg-gray-100 overflow-hidden">
       {Object.keys(user).length > 0 ? (
-        <>
+        <div style={{ height: "100%", width:"100vw", zIndex:9999 }}  className="">
           <Header />
-          <motion.div style={{ height: "Calc(100vh - 100px)" }}>{children}</motion.div>
-        </>
+          <PageTransition ref={ref}>
+            <div >{children}</div>
+          </PageTransition>
+        </div>
       ) : (
         <div className="w-screen h-screen flex items-center justify-center">
           <CircularProgress sx={{ color: "gray" }} size={60} />
         </div>
       )}
-      </AnimatePresence>
     </div>
   );
 };

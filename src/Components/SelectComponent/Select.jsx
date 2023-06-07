@@ -16,6 +16,7 @@ export default function CustomSelect({ options = [], value, setValue, label }) {
     setValue("");
     selectRef.current.blur();
   };
+  
 
   return (
     <Box
@@ -25,6 +26,7 @@ export default function CustomSelect({ options = [], value, setValue, label }) {
         display: "flex",
         alignItems: "center",
         gap: 1,
+        color:"white"
       }}
     >
       <FormControl fullWidth>

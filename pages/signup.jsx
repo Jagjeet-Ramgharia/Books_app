@@ -52,7 +52,7 @@ const login = () => {
     const config = {
     type: "spring",
     damping: 20,
-    stiffness: 100,
+    stiffness: 120,
   };
 
   return (

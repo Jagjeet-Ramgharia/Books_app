@@ -11,6 +11,7 @@ import { getGenres } from "@/src/Redux/slices/GenresSlice";
 import { getAuthors } from "@/src/Redux/slices/AuthorSlice";
 import CustomSelect from "@/src/Components/SelectComponent/Select";
 import { Toast } from "@/src/Components/Toast/Toast";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Books = () => {
   const size = 10;
@@ -29,6 +30,7 @@ const Books = () => {
   const isLoading = useSelector((state) => state.BooksSlice.BooksInfoLoading);
   const Authors = useSelector((state) => state.AuthorsSlice.AuthorsInfo);
   const Genres = useSelector((state) => state.GenresSlice.GenresInfo);
+
 
   useEffect(() => {
     if (search) {
@@ -95,13 +97,25 @@ const Books = () => {
       });
   }
 
+  const onTheRight = { y: "100%" };
+  const inTheCenter = { y: 0 };
+  const onTheLeft = { y: "-100%" };
+  const transition = { duration: 0.9, ease: "easeInOut" };
 
   return (
     <Layout>
-      <div className="bg-gray-100 w-full overflow-y-auto h-full">
-        <div className="flex justify-between items-center my-5 mx-3">
-          <span className="text-2xl font-extrabold">All Books</span>
-          <CustomSelect
+      <AnimatePresence>
+      <motion.div style={{height:"calc(100vh - 100px)"}} className="z-50 px-4 gap-2 flex items-center">
+        <motion.div
+             initial={{x:"-100%"}}
+            animate={{x:"0%"}}
+            exit={{x:"100%"}}
+            transition={{
+              ...transition,
+            }}
+        className="h-[500px] 3xl:h-[800px] card_container shadow-2xl no-scrollbar border-2 p-5 rounded-2xl">
+          <div className="h-[250px] flex flex-col justify-between items-center">
+            <CustomSelect
             options={Authors?.authors || []}
             value={author}
             setValue={setAuthor}
@@ -120,49 +134,50 @@ const Books = () => {
               onChange={(e, page) => setCurrentPage(page)}
             />
           )}
-          <div className="w-80 shadow-sm">
-            <InputField
-              value={search}
-              handleChange={(e) => setSearch(e.target.value)}
-              type="text"
-              placeholder="Search by title, genre or author"
-            />
           </div>
-        </div>
-        <div className="w-full flex items-center justify-center">
-          <div className="mt-10 w-10/12">
+        </motion.div>
+        <div className="w-full">
+          <motion.div
+            initial={onTheRight}
+            animate={inTheCenter}
+            exit={onTheLeft}
+            transition={{
+              ...transition,
+            }}
+            className="w-full h-[500px] 3xl:h-[800px] card_container shadow-2xl no-scrollbar border-2 p-5 rounded-2xl overflow-y-scroll"
+          >
+ 
             {isLoading ? (
-              <div className="w-full h-[600px] flex items-center justify-center">
+              <div className="w-full h-[500px] flex items-center justify-center">
                 <CircularProgress sx={{ color: "gray" }} size={50} />
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-3 gap-5">
-                {
-                  books?.books?.map((el) => {
-                return (
-                  <Card
-                    key={el?.id}
-                    id={el?.id}
-                    author={el?.author}
-                    description={el?.description}
-                    genre={el?.genre}
-                    title={el?.title}
-                    image={el?.image}
-                    btnText="Add To Favourites"
-                    isLoading={loading}
-                    handleOnClick={addToFavourites}
-                    setShowReviews={setShowReviews}
-                    showReviews={showReviews}
-                    reviews={el?.reviews}
-                  />
-                );
-              })
-                }
+                {books?.books?.map((el) => {
+                  return (
+                    <Card
+                      key={el?.id}
+                      id={el?.id}
+                      author={el?.author}
+                      description={el?.description}
+                      genre={el?.genre}
+                      title={el?.title}
+                      image={el?.image}
+                      btnText="Add To Favourites"
+                      isLoading={loading}
+                      handleOnClick={addToFavourites}
+                      setShowReviews={setShowReviews}
+                      showReviews={showReviews}
+                      reviews={el?.reviews}
+                    />
+                  );
+                })}
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
+      </AnimatePresence>
     </Layout>
   );
 };

@@ -27,16 +27,16 @@
   width: 370px !important;
 }
 
-.background{
-/* background: #005AA7; 
-background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  
-background: linear-gradient(to right, #FFFDE4, #005AA7); */
-background-image: url("../src//Assets//images/background2.jpg");
-/* background-size: 100% 100%; */
-object-fit: contain;
-background-repeat: no-repeat;
+.background {
+  /* background-image: url("../src//Assets//images/book4.jpg");
+  background-size: 100% 100%;
+  object-fit: contain;
+  background-repeat: no-repeat; */
+  /* position: relative;
+  -webkit-box-shadow: inset 0 0 14px 14px #000;    
+    -moz-box-shadow: inset 0 0 14px 14px #000;
+    box-shadow: inset 0 0 14px 14px #000; */
 }
-
 
 .form_main {
   width: 350px;
@@ -79,7 +79,7 @@ background-repeat: no-repeat;
   border-radius: 30px;
   margin: 10px 0;
   color: black;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 500;
   box-sizing: border-box;
   padding-left: 30px;
@@ -103,7 +103,7 @@ background-repeat: no-repeat;
   background-color: #8000ff;
   height: 40px;
   color: white;
-  font-size: .8em;
+  font-size: 0.8em;
   font-weight: 500;
   letter-spacing: 1px;
   border-radius: 30px;
@@ -123,12 +123,12 @@ background-repeat: no-repeat;
   border-bottom-right-radius: 100px;
   border-top-left-radius: 100px;
   filter: blur(10px);
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 #button:hover::after {
   transform: translateX(600px);
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 .signupContainer {
@@ -141,13 +141,13 @@ background-repeat: no-repeat;
 }
 
 .signupContainer p {
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: 500;
   color: black;
 }
 
 .signupContainer a {
-  font-size: .7em;
+  font-size: 0.7em;
   font-weight: 500;
   background-color: #2e2e2e;
   color: white;
@@ -186,4 +186,39 @@ background-repeat: no-repeat;
   vertical-align: bottom;
 }
 
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: var(--red);
+  transform-origin: 0%;
+}
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.background {
+
+}
+
+.card_container {
+  background: rgba(229, 203, 238, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(229, 203, 238, 255) 0%,
+    rgba(196, 239, 235, 255) 80%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(229, 203, 238, 255) 0%,
+    rgba(196, 239, 235, 255) 80%
+  );
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(229, 203, 238, 255) 0%,
+    rgba(196, 239, 235, 255) 80%
+  );
+}
