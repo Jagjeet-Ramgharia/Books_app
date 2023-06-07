@@ -4,6 +4,7 @@ import { getUserInfo } from "../Redux/slices/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { CircularProgress } from "@mui/material";
+import {motion, AnimatePresence} from 'framer-motion'
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
@@ -21,16 +22,18 @@ const Layout = ({ children }) => {
 
   return (
     <div className="">
+      <AnimatePresence>
       {Object.keys(user).length > 0 ? (
         <>
           <Header />
-          <div style={{ height: "Calc(100vh - 100px)" }}>{children}</div>
+          <motion.div style={{ height: "Calc(100vh - 100px)" }}>{children}</motion.div>
         </>
       ) : (
         <div className="w-screen h-screen flex items-center justify-center">
           <CircularProgress sx={{ color: "gray" }} size={60} />
         </div>
       )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -20,8 +20,8 @@ export default function CustomSelect({ options = [], value, setValue, label }) {
   return (
     <Box
       sx={{
-        minWidth: 120,
-        width: "200px",
+        minWidth: "120px",
+        width: "300px",
         display: "flex",
         alignItems: "center",
         gap: 1,
@@ -45,7 +45,6 @@ export default function CustomSelect({ options = [], value, setValue, label }) {
       </FormControl>
       <SubmitButton
         text={"Reset"}
-        classNames={"px-4"}
         handleOnClick={handleReset}
       />
     </Box>

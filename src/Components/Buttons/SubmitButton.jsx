@@ -13,7 +13,7 @@ const SubmitButton = ({
       id="button"
       disabled={disabled}
       onClick={handleOnClick}
-      className={`${classNames} bg-gray-700 disabled:cursor-not-allowed text-white h-10 outline-none border-none rounded-lg`}
+      className={`${classNames} disabled:cursor-not-allowed text-white h-10 outline-none border-none rounded-lg`}
     >
       {isLoading ? (
         <CircularProgress sx={{ color: "white" }} size={16} />
