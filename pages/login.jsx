@@ -34,22 +34,26 @@ const login = () => {
         password,
       })
       .then((res) => {
+        console.log("res",res)
         if (res.status === 200) {
           localStorage.setItem("token", res.data.token);
           location.push("/books");
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 5000);
+           setIsLoading(false);
+          // setTimeout(() => {
+          //   setIsLoading(false);
+          // }, 5000);
         }
       })
       .catch((err) => {
-        if (err?.response?.data?.errors?.[0]) {
+        console.log("err",err)
+        if (err?.response?.data) {
           setErr({
             err: true,
-            message: err?.response?.data?.errors?.[0]?.msg,
+            message: err?.response?.data,
           });
-          setIsLoading(false);
+          
         }
+        setIsLoading(false);
       });
   }
 
